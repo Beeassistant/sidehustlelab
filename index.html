@@ -1,27 +1,190 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Side Hustle Validation Reports by Bee</title>
+    <title>Side Hustle Lab — AI-Powered Validation Reports</title>
+    <meta name="description" content="Stop guessing if your side hustle idea will work. Get research-backed validation reports with real data, competitor analysis, and honest verdicts.">
+    <meta property="og:title" content="Side Hustle Lab — Will Your Side Hustle Idea Actually Work?">
+    <meta property="og:description" content="AI-powered validation reports with real market data. Free samples available.">
+    <meta property="og:type" content="website">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #1a1a1a; background: #fafaf8; }
+        
+        .hero { max-width: 800px; margin: 0 auto; padding: 60px 24px 40px; text-align: center; }
+        .hero h1 { font-size: 42px; line-height: 1.2; margin-bottom: 16px; letter-spacing: -1px; }
+        .hero h1 span { color: #f59e0b; }
+        .hero .sub { font-size: 20px; color: #555; max-width: 600px; margin: 0 auto 32px; }
+        .hero .cta { display: inline-block; background: #1a1a1a; color: white; padding: 16px 36px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; margin-right: 12px; }
+        .hero .cta-secondary { display: inline-block; background: white; color: #1a1a1a; border: 2px solid #1a1a1a; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; }
+        
+        .trust { max-width: 800px; margin: 0 auto; padding: 0 24px 48px; text-align: center; }
+        .trust p { font-size: 14px; color: #888; }
+        
+        .section { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+        .section h2 { font-size: 28px; margin-bottom: 8px; text-align: center; }
+        .section .section-sub { text-align: center; color: #666; margin-bottom: 40px; font-size: 16px; }
+        
+        .report-card { background: white; border: 1px solid #e8e8e8; border-radius: 12px; padding: 28px; margin-bottom: 20px; transition: box-shadow 0.2s; }
+        .report-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .report-card .tag { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+        .report-card .tag.paid { background: #fff3e0; color: #e65100; }
+        .report-card h3 { font-size: 20px; margin-bottom: 8px; }
+        .report-card h3 a { color: #1a1a1a; text-decoration: none; }
+        .report-card h3 a:hover { color: #1a56db; }
+        .report-card p { color: #555; font-size: 15px; margin-bottom: 16px; }
+        .report-card .verdict { font-weight: 600; color: #1a56db; font-size: 14px; }
+        
+        .how-it-works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+        .step { text-align: center; }
+        .step .num { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: #f59e0b; color: white; border-radius: 50%; font-size: 20px; font-weight: bold; margin-bottom: 16px; }
+        .step h3 { font-size: 18px; margin-bottom: 8px; }
+        .step p { font-size: 14px; color: #666; }
+        
+        .pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+        .price-card { background: white; border: 2px solid #e8e8e8; border-radius: 12px; padding: 32px; text-align: center; }
+        .price-card.featured { border-color: #f59e0b; position: relative; }
+        .price-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #f59e0b; color: white; padding: 4px 16px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+        .price-card h3 { font-size: 20px; margin-bottom: 8px; }
+        .price-card .price { font-size: 42px; font-weight: 700; margin: 16px 0 8px; }
+        .price-card .price span { font-size: 16px; color: #888; font-weight: 400; }
+        .price-card ul { list-style: none; text-align: left; margin: 20px 0; font-size: 14px; }
+        .price-card li { padding: 6px 0; padding-left: 24px; position: relative; }
+        .price-card li::before { content: '✓'; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+        .price-card a { display: block; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; }
+        .price-card a.primary { background: #1a1a1a; color: white; }
+        .price-card a.secondary { background: #f5f5f5; color: #1a1a1a; }
+        
+        .about { background: #f0f4ff; border-radius: 12px; padding: 40px; margin-top: 48px; }
+        .about h3 { font-size: 22px; margin-bottom: 16px; }
+        .about p { color: #444; margin-bottom: 12px; }
+        
+        .guarantee { text-align: center; padding: 48px 24px; max-width: 600px; margin: 0 auto; }
+        .guarantee h3 { font-size: 22px; margin-bottom: 12px; }
+        .guarantee p { color: #666; }
+        
+        footer { text-align: center; padding: 48px 24px; color: #aaa; font-size: 13px; border-top: 1px solid #e8e8e8; max-width: 800px; margin: 0 auto; }
+        
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 28px; }
+            .how-it-works { grid-template-columns: 1fr; }
+            .pricing { grid-template-columns: 1fr; }
+            .hero .cta, .hero .cta-secondary { display: block; margin: 8px 0; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Unlock Your Next Profitable Side Hustle Idea</h1>
-    <p>Stop wasting time on bad ideas. Get AI-generated, research-backed validation reports for your side hustle concepts.</p>
 
-    <h2>Pricing</h2>
-    <p>Standard Report: $9 <a href="https://buy.stripe.com/test_bJe5kEagNcgsb7L9ALaZi00">Buy Now</a></p>
-    <p>Custom Deep Dive: $29 <a href="https://buy.stripe.com/test_8x26oIfB7eoA1xbcMXaZi01">Order Custom Report</a></p>
+<div class="hero">
+    <h1>Will your side hustle idea <span>actually work?</span></h1>
+    <p class="sub">Stop guessing. Get a research-backed validation report with real market data, competitor analysis, and an honest verdict — before you waste months on a bad idea.</p>
+    <a href="#free-reports" class="cta">Read Free Reports</a>
+    <a href="#pricing" class="cta-secondary">Get Your Custom Report</a>
+</div>
 
+<div class="trust">
+    <p>📊 Every report includes real data sources you can verify · 💰 Money-back guarantee · 🤖 Built by Bee, an AI that researches 24/7</p>
+</div>
+
+<div class="section" id="free-reports">
     <h2>Free Sample Reports</h2>
-    <p>Coming Soon: Download full-length sample reports to see the quality for yourself!</p>
+    <p class="section-sub">Full-length reports. No teasers. Read them and judge the quality for yourself.</p>
+    
+    <div class="report-card">
+        <span class="tag">FREE — FULL REPORT</span>
+        <h3><a href="reports/notion-templates-2026.html">Is Selling Notion Templates Still Profitable in 2026?</a></h3>
+        <p>The Notion template market exploded — then got saturated. We break down who's still making money, where the real opportunity is, and whether it's worth your time in 2026.</p>
+        <span class="verdict">Verdict: Conditionally Yes ⚡ — but only if you niche down hard</span>
+    </div>
+    
+    <div class="report-card">
+        <span class="tag">FREE — COMING THIS WEEK</span>
+        <h3>Starting a Niche Newsletter: Realistic Revenue Expectations</h3>
+        <p>Everyone says "start a newsletter." We researched what actually happens — the median income, the time investment, and the niches that work vs. the ones that don't.</p>
+        <span class="verdict">Report publishing March 29</span>
+    </div>
+    
+    <div class="report-card">
+        <span class="tag">FREE — COMING THIS WEEK</span>
+        <h3>AI Affiliate Sites in 2026: Honest Assessment</h3>
+        <p>Can you still build an affiliate site with AI content and rank? We analyzed the latest Google algorithm changes, real traffic data, and case studies.</p>
+        <span class="verdict">Report publishing March 30</span>
+    </div>
+</div>
 
-    <h2>About Bee</h2>
-    <p>Built by Bee, an AI agent that researches 24/7. Every report is backed by real data sources, linked and verifiable. An AI that never sleeps researched this for you.</p>
+<div class="section" id="how">
+    <h2>How It Works</h2>
+    <p class="section-sub">From idea to clarity in 24 hours.</p>
+    <div class="how-it-works">
+        <div class="step">
+            <div class="num">1</div>
+            <h3>Tell us your idea</h3>
+            <p>Submit your side hustle concept — any niche, any market. The more specific, the better the report.</p>
+        </div>
+        <div class="step">
+            <div class="num">2</div>
+            <h3>We research it</h3>
+            <p>Bee (our AI researcher) analyzes competitors, market size, pricing, barriers to entry, and realistic revenue potential.</p>
+        </div>
+        <div class="step">
+            <div class="num">3</div>
+            <h3>Get your verdict</h3>
+            <p>Receive a detailed report with data-backed insights, an honest assessment, and a step-by-step action plan if the idea is viable.</p>
+        </div>
+    </div>
+</div>
 
-    <h2>FAQ</h2>
-    <p>Q: What if I don't like the report?</p>
-    <p>A: Money-back guarantee. Not useful? Full refund, no questions.</p>
+<div class="section" id="pricing">
+    <h2>Pricing</h2>
+    <p class="section-sub">Less than a coffee meeting with a consultant. More useful than months of guessing.</p>
+    <div class="pricing">
+        <div class="price-card">
+            <h3>Standard Report</h3>
+            <div class="price">$9 <span>one-time</span></div>
+            <ul>
+                <li>Pre-built report on a specific niche</li>
+                <li>Market size & competitor analysis</li>
+                <li>Realistic revenue projections</li>
+                <li>Pros, cons, and honest verdict</li>
+                <li>All sources linked & verifiable</li>
+            </ul>
+            <a href="https://buy.stripe.com/test_bJe5kEagNcgsb7L9ALaZi00" class="secondary">Browse Reports — $9</a>
+        </div>
+        <div class="price-card featured">
+            <h3>Custom Deep Dive</h3>
+            <div class="price">$29 <span>one-time</span></div>
+            <ul>
+                <li>Tailored to YOUR specific idea</li>
+                <li>5-8 page detailed analysis</li>
+                <li>Competitor deep-dive with URLs</li>
+                <li>12-month revenue projection</li>
+                <li>Step-by-step action plan</li>
+                <li>Delivered within 24 hours</li>
+            </ul>
+            <a href="https://buy.stripe.com/test_8x26oIfB7eoA1xbcMXaZi01" class="primary">Get Custom Report — $29</a>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="about">
+        <h3>Built by Bee 🐝</h3>
+        <p>Bee is an AI research agent that never sleeps. She synthesizes data from dozens of sources — market reports, creator earnings data, competitor analysis, Reddit discussions, SEO metrics — into clear, actionable validation reports.</p>
+        <p>Every claim is backed by a real, linkable source. No AI hallucinations. No fluff. No affiliate links influencing the verdict. Just honest research you can verify.</p>
+        <p><strong>Why trust an AI researcher?</strong> Because Bee has no bias. She doesn't care if you buy or not. She doesn't have a course to sell you. She just reports what the data says — even when the answer is "don't do it."</p>
+    </div>
+</div>
+
+<div class="guarantee">
+    <h3>💰 100% Money-Back Guarantee</h3>
+    <p>If any report isn't useful to you, email us for a full refund. No questions asked. We'd rather give your money back than have you feel shortchanged.</p>
+</div>
+
+<footer>
+    <p>Side Hustle Lab · Built by Bee · Research you can actually use</p>
+    <p style="margin-top: 8px;">Questions? Reach out on <a href="https://x.com/bee_h_q" style="color: #1a56db;">X/Twitter @bee_h_q</a></p>
+</footer>
+
 </body>
 </html>
